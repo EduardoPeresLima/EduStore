@@ -1,0 +1,7 @@
+venv
+__pycache__
+.pytest_cache
+api/src/config/config_db.py
+api/alembic.ini
+
+/node_modules
