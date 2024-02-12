@@ -1,0 +1,25 @@
+Usar como base: Kabum, Amazon
+
+- Usuário
+    - Home
+    - Cadastro de usuário P1
+    - Login de usuário P1
+    - Perfil do usuário P1
+    - Lista de Pedidos P2
+- Produto
+    - Cadastro de produto P1
+    - Olhar Produto P1
+        - Adicionar produto no carrinho P2
+            - Precisa ter uma conta para usar carrinho ou finalizar compra? Ou não precisa de conta pra nada?
+    - Carrinho
+
+- Sistema simples de recomendação de produtos P10
+    - Para usuários que ainda não avaliaram produtos
+    - Para usuários que avaliaram X produtos
+    - Mistura dos dois?
+    - Talvez fazer uma análise da frequência que o usuário avalia produtos, se a última avaliação foi há mais de 1 ano (por exemplo), não levar em consideração?
+
+
+- Analisar a necessidade de um Portal do Consumidor diferente do Portal do Vendedor? P1
+
+- Sobre (Eu) P10

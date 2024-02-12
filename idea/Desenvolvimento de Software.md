@@ -1,0 +1,20 @@
+Desenvolvimento de Software
+- Análise Financeira
+    - Viabilidade do software a ser desenvolvido
+    - Custo
+    - Tempo de desenvolvimento
+- Levantamento e Análise de Requisitos
+    - Requisitos Funcionais
+    - Requisitos não funcionais
+- Design do Projeto
+    - Compreender o produto e seu propósito -> Visão do cliente
+    - Arquitetura do Software
+    - Protótipo de Alto Nível
+    - Protótipo de Baixo Nível
+- Implementação
+- Teste
+    - Testes Unitários
+    - Testes de Integração
+    - Testes Automatizados (selenium, cypres)
+- Documentação
+    - Swagger
