@@ -1,0 +1,4 @@
+- Development tools versions
+    - npm 9.8.1
+    - Node 18.18.2
+    - Angular CLI 16.2.7

@@ -5,3 +5,4 @@ api/src/config/config_db.py
 api/alembic.ini
 
 /node_modules
+.vscode
