@@ -17,10 +17,16 @@ down_revision: Union[str, None] = '09ebfbae3d44'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-
+table_name = 'order_product'
 def upgrade() -> None:
-    pass
-
+    op.create_table(
+        table_name, 
+        sa.Column('id', sa.Integer, primary_key=True, comment="Identifier of the relationship order-product"),
+        sa.Column('order_id', sa.Integer, sa.ForeignKey('order.id'), nullable=False, comment="Identifier of the order from which the product is inserted"),
+        sa.Column('product_id', sa.Integer, sa.ForeignKey('product.id'), nullable=False, comment="Identifier of the product inserted in the order"),
+        sa.Column('quantity', sa.Integer, nullable=False, comment="Quantity of products in the order"),
+        comment="Store information about what products and how many are in a specific order"
+    )
 
 def downgrade() -> None:
-    pass
+    op.drop_table(table_name)

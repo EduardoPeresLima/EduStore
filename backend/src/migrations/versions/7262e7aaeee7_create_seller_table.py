@@ -24,8 +24,8 @@ def upgrade() -> None:
         sa.Column('id', sa.Integer, primary_key=True, comment="Seller's Identifier"),
         sa.Column('name', sa.String(50), nullable=False, comment="Seller's name"),
         sa.Column('password', sa.String(50), nullable=False, comment="Seller's password hashed"),
-        comment="Table to store the seller's information"
+        comment="Store the seller's information"
     )
 
 def downgrade() -> None:
-    sa.drop_table(table_name)
+    op.drop_table(table_name)

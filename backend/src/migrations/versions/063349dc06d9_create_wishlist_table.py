@@ -17,10 +17,15 @@ down_revision: Union[str, None] = '38f83bcc03fc'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-
+table_name = 'wishlist'
 def upgrade() -> None:
-    pass
-
+    op.create_table(
+        table_name, 
+        sa.Column('id', sa.Integer, primary_key=True, comment="Wishlist's Identifier"),
+        sa.Column('buyer_id', sa.Integer, sa.ForeignKey('buyer.id'), nullable=False, comment="Owner of this wishlist item"),
+        sa.Column('product_id', sa.Integer, sa.ForeignKey('product.id'),nullable=False, comment="Product in this wishlist"),
+        comment="Store all the buyer's wishlist items"
+    )
 
 def downgrade() -> None:
-    pass
+    op.drop_table(table_name)

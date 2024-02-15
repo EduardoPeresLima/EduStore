@@ -17,10 +17,18 @@ down_revision: Union[str, None] = '063349dc06d9'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-
+table_name = 'evaluation_item'
 def upgrade() -> None:
-    pass
-
+    op.create_table(
+        table_name, 
+        sa.Column('id', sa.Integer, primary_key=True, comment="Evaluation's Identifier"),
+        sa.Column('buyer_id', sa.Integer, sa.ForeignKey('buyer.id'), nullable=False, comment="Owner of this evaluation"),
+        sa.Column('product_id', sa.Integer, sa.ForeignKey('product.id'),nullable=False, comment="Product that the buyer evaluated"),
+        sa.Column('comment_title', sa.String(50), nullable=False, comment="Comment's title"),
+        sa.Column('comment', sa.String(1000), nullable=False, comment="Comment's body"),
+        sa.Column('rating', sa.Integer, nullable=False, comment="Number the user rated on this product"),
+        comment="Store all the buyer's evaluations"
+    )
 
 def downgrade() -> None:
-    pass
+    op.drop_table(table_name)

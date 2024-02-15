@@ -17,10 +17,18 @@ down_revision: Union[str, None] = 'edd8cd2a2745'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-
+table_name = 'payment'
 def upgrade() -> None:
-    pass
-
+    op.create_table(
+        table_name, 
+        sa.Column('id', sa.Integer, primary_key=True, comment="Payment's Identifier"),
+        sa.Column('buyer_id', sa.Integer, sa.ForeignKey('buyer.id'), nullable=False, comment="Buyer that made this payment"),
+        sa.Column('payment_method', sa.String(50), nullable=False, comment="Payment method, for example: PIX"),
+        sa.Column('value_cents', sa.Integer, nullable=False, comment="Value payed in cents"),
+        sa.Column('created_at', sa.DateTime, nullable=False, comment="When the payment was initiated"),
+        sa.Column('payed_at', sa.DateTime, nullable=False, comment="When the payment was finalized"),
+        comment="Detailed payment history"
+    )
 
 def downgrade() -> None:
-    pass
+    op.drop_table(table_name)

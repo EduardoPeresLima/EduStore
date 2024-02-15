@@ -17,10 +17,14 @@ down_revision: Union[str, None] = '04ad120dc8fc'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-
+table_name = 'category'
 def upgrade() -> None:
-    pass
+    op.create_table(
+        table_name, 
+        sa.Column('id', sa.Integer, primary_key=True, comment="Category's Identifier"),
+        sa.Column('name', sa.String(50), nullable=False, comment="Category's Name"),
+        comment="Products categories types"
 
-
+    )
 def downgrade() -> None:
-    pass
+    op.drop_table(table_name)

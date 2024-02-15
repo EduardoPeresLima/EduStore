@@ -17,10 +17,16 @@ down_revision: Union[str, None] = 'b5d5375e95ae'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-
+table_name = 'cart_item'
 def upgrade() -> None:
-    pass
-
+    op.create_table(
+        table_name, 
+        sa.Column('id', sa.Integer, primary_key=True, comment="Cart's Identifier"),
+        sa.Column('buyer_id', sa.Integer, sa.ForeignKey('buyer.id'), nullable=False, comment="Owner of this cart item"),
+        sa.Column('product_id', sa.Integer, sa.ForeignKey('product.id'),nullable=False, comment="Product in this cart"),
+        sa.Column('quantity', sa.Integer, nullable=False, comment="Quantity of the product in the cart"),
+        comment="Store all the buyer's cart items"
+    )
 
 def downgrade() -> None:
-    pass
+    op.drop_table(table_name)

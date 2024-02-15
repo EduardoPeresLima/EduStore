@@ -24,12 +24,12 @@ def upgrade() -> None:
         sa.Column('id', sa.Integer, primary_key=True, comment="Buyer's Identifier"),
         sa.Column('name', sa.String(50), nullable=False, comment="Buyer's name"),
         sa.Column('password', sa.String(50), nullable=False, comment="Buyer's password hashed"),
-        sa.Column('principal_email', sa.String(320), nullable=False, comment="Buyer's principal email"),
+        sa.Column('primary_email', sa.String(320), nullable=False, comment="Buyer's primary email"),
         sa.Column('secondary_email', sa.String(320), nullable=True, comment="Buyer's secondary email, can be null"),
         sa.Column('primary_phone_number', sa.String(20), nullable=False, comment="Buyer's primary phone number"),
         sa.Column('secondary_phone_number', sa.String(20), nullable=True, comment="Buyer's secondary phone number, can be null"),
-        comment="Table to store the buyer's information"
+        comment="Store the buyer's information"
     )
 
 def downgrade() -> None:
-    sa.drop_table(table_name)
+    op.drop_table(table_name)

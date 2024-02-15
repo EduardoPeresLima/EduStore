@@ -17,10 +17,15 @@ down_revision: Union[str, None] = 'e8815dc51ffb'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-
+table_name = 'product_category'
 def upgrade() -> None:
-    pass
-
+    op.create_table(
+        table_name, 
+        sa.Column('id', sa.Integer, primary_key=True, comment="Identifier of the relationship product-category"),
+        sa.Column('product_id', sa.Integer, sa.ForeignKey('product.id'), nullable=False, comment="The product chosen to be in the category"),
+        sa.Column('category_id', sa.Integer, sa.ForeignKey('category.id'), nullable=False, comment="A category that the product belongs to"),
+        comment="Store the products that belong to the categories"
+    )
 
 def downgrade() -> None:
-    pass
+    op.drop_table(table_name)

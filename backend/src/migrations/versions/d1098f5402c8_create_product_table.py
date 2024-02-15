@@ -24,8 +24,14 @@ def upgrade() -> None:
         sa.Column('seller_id', sa.Integer, sa.ForeignKey('seller.id'), nullable = False ,comment="The seller of this product"),
         sa.Column('name', sa.String(50), nullable=False, comment="The name of the product"),
         sa.Column('description', sa.String(512), nullable=False, comment="The description of the product that will be shown on the frontend, detailed"),
-        sa.Column('quantity_available', sa.Integer)
+        sa.Column('quantity_in_stock', sa.Integer, nullable=False, comment="The quantity on product in stock on the seller"),
+        sa.Column('price_cents', sa.Integer, nullable=False, comment="The price value in cents"),
+        sa.Column('currency', sa.String(10), nullable=False, comment="Currency in which the product is being sold"),
+        sa.Column('image', sa.LargeBinary, nullable=False, comment="The image of the product, saved as BLOB"),
+        sa.Column('created_at', sa.DateTime, nullable=False, comment="The creation time of the product"),
+        sa.Column('updated_at', sa.DateTime, nullable=False, comment="The last update time of the product"),
+        comment="Products that are sold in the store"
     )
 
 def downgrade() -> None:
-    sa.drop_table(table_name)
+    op.drop_table(table_name)
