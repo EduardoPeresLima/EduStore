@@ -8,15 +8,15 @@
     <details>
     <summary>Usecase Diagram for Buyer v2</summary>
 
-    ![UseCase for Buyer](idea/diagrams/v2/UseCase_Buyer.png)
+    ![UseCase for Buyer](idea/diagrams/UseCase/v2_UseCase_Buyer.png)
     </details>
     <details>
     <summary>Usecase Diagram for Seller v2</summary>
 
-    ![UseCase for Buyer](idea/diagrams/v2/UseCase_Seller.png)
+    ![UseCase for Seller](idea/diagrams/UseCase/v2_UseCase_Seller.png)
     </details>
     <details>
-    <summary>Entity Relationship Diagram v2</summary>
+    <summary>Entity Relationship Diagram v3</summary>
 
-    ![UseCase for Buyer](idea/diagrams/v2/ER.png)
+    ![ER](idea/diagrams/ER/v3_ER.png)
     </details>
