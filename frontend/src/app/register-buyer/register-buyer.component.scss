@@ -1,0 +1,19 @@
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #008a6c;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 324px;
+    height: 419px;
+    border-radius: 10px;
+    padding-top: 20px;
+}

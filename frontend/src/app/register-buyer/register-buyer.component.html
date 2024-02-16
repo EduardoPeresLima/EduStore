@@ -1,0 +1,21 @@
+<!-- <form class="center">
+    <div class="form">
+        <input/>
+    </div>
+</form> -->
+
+<div class="center">
+    <form class="form" [formGroup]="buyerForm">
+        <label for="name">Name:</label>
+        <input id="name" type="text" placeholder="Enter your full name..." formControlName="name"/>
+        <label for="password">Password:</label>
+        <input id="password" type="password" placeholder="Enter your password..." formControlName="password"/>
+        <label for="confirm-password">Confirm Password:</label>
+        <input id="confirm-password" type="password" placeholder="Confirm your password..." formControlName="confirm_password"/>
+        <label for="primary-email">E-mail:</label>
+        <input id="primary-email" type="text" formControlName="primary_email"/>
+        <label for="primary-phone-number">Phone Number:</label>
+        <input id="primary-phone-number" type="text" formControlName="primary_phone_number"/>
+        <button (click)="registerBuyer()" [disabled]="!buyerForm.valid">Register Buyer</button>
+    </form>
+</div>
