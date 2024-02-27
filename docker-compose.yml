@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  #frontend:
+  backend:
+    depends_on:
+      - db
+    build: ./backend
+    expose:
+      - 8000:8000
+    command: bash -c "sleep 10 && alembic upgrade head && uvicorn src.api:app --host 0.0.0.0 --port 8000 --env-file environments/.env.prod"
+  db:
+    image: mariadb:latest
+    expose: 
+      - 3308:3306
+    ports:
+      - 3308:3306
+    # volumes:
+    #   - ./mariadb:/var/lib/mysql
+    environment:
+      - MARIADB_ROOT_PASSWORD=mypass
+
+

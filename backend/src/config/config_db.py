@@ -10,7 +10,7 @@ DATABASE_DIALECT = 'mysql+aiomysql'
 DATABASE_USER = 'root'
 DATABASE_PASSWORD = config.get('DATABASE_PASSWORD')
 DATABASE_HOST = config.get('DATABASE_HOST')
-DATABASE = 'ihr-se'
+DATABASE = 'project_db'
 
 ECHO = False if config.get('ECHO', "False") == 'False' else True
 
