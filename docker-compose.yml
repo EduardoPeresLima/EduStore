@@ -1,23 +1,27 @@
 version: '3.8'
 
 services:
-  #frontend:
   backend:
+    image: eduperes/angular-python-project-backend
     depends_on:
-      - db
+      - database
     build: ./backend
-    expose:
+    environment:
+      - ENV_FILE_PATH=environments/.env.${SHORT_ENV}
+    ports:
       - 8000:8000
-    command: bash -c "sleep 10 && alembic upgrade head && uvicorn src.api:app --host 0.0.0.0 --port 8000 --env-file environments/.env.prod"
-  db:
-    image: mariadb:latest
-    expose: 
-      - 3308:3306
+    command: bash -c "sleep 10 && alembic upgrade head && uvicorn src.api:app --host 0.0.0.0 --port 8000"
+  database:
+    image: eduperes/angular-python-project-database
+    build: ./database
     ports:
       - 3308:3306
     # volumes:
-    #   - ./mariadb:/var/lib/mysql
+    #   - ./database_volume:/var/lib/mysql
     environment:
-      - MARIADB_ROOT_PASSWORD=mypass
+      - MARIADB_ROOT_PASSWORD=12345
+
+volumes:
+  database_volume:
 
 

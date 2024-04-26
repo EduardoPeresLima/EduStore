@@ -6,3 +6,4 @@ api/alembic.ini
 
 /node_modules
 .vscode
+/mariadb

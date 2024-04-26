@@ -25,3 +25,6 @@
 
     ![ER](idea/diagrams/ER/v3_ER.png)
     </details>
+- Docker
+    - `npm run prod` para buildar o projeto com banco e backend
+    - `docker push` para subir imagens para o docker hub
