@@ -26,6 +26,6 @@
     ![ER](idea/diagrams/ER/v3_ER.png)
     </details>
 - Docker
-    - `npm run prod` para buildar o projeto com banco e backend
+    - `npm run prod` for building the entire project (database, backend, frontend)
         - I don't understand it yet, but apparently ngnix is used to create a server for the frontend? 
-    - `docker push` para subir imagens para o docker hub
+    - `docker push` to push images to docker hub

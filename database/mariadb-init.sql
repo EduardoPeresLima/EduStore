@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS `angular-python-project`;
+CREATE DATABASE IF NOT EXISTS `edustore`;
