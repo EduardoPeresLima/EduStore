@@ -1,14 +1,15 @@
 version: '3.8'
 
-services:
+services:  
   frontend:
+    image: eduperes/edustore-frontend
     build: 
       context: ./frontend
       no_cache: false #Set to true to make a clean build
     ports: 
       - 4200:4200
   backend:
-    image: eduperes/angular-python-project-backend
+    image: eduperes/edustore-backend
     depends_on:
       - database
     build: 
@@ -19,8 +20,9 @@ services:
     ports:
       - 8000:8000
     command: bash -c "sleep 10 && alembic upgrade head && uvicorn src.api:app --host 0.0.0.0 --port 8000"
+    restart: 'always'
   database:
-    image: eduperes/angular-python-project-database
+    image: eduperes/edustore-database
     build: ./database
     ports:
       - 3308:3306
