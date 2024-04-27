@@ -1,6 +1,10 @@
 version: '3.8'
 
 services:
+  frontend:
+    build: ./frontend
+    ports: 
+      - 4200:4200
   backend:
     image: eduperes/angular-python-project-backend
     depends_on:

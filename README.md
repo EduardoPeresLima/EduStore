@@ -27,4 +27,5 @@
     </details>
 - Docker
     - `npm run prod` para buildar o projeto com banco e backend
+        - I don't understand it yet, but apparently ngnix is used to create a server for the frontend? 
     - `docker push` para subir imagens para o docker hub
