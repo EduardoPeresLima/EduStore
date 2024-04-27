@@ -59,11 +59,12 @@ def run_migrations_online() -> None:
 
     """
     env_config = get_environment_config()
+    DATABASE_USER = env_config.get('DATABASE_USER')
     DATABASE_PASSWORD = env_config.get('DATABASE_PASSWORD')
     DATABASE_HOST = env_config.get('DATABASE_HOST')
+    DATABASE_NAME = env_config.get('DATABASE_NAME')
+    config.set_main_option('sqlalchemy.url', f"mysql+pymysql://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}/{DATABASE_NAME}")
 
-    config.set_main_option('sqlalchemy.url', f"mysql+pymysql://root:{DATABASE_PASSWORD}@{DATABASE_HOST}/angular-python-project")
-    
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
