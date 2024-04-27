@@ -6,7 +6,7 @@ from .routes.routes import routes
 
 description = """
 `@brief`      Project with Angular/Python/MariaDB\n
-`@author`     **Eduardo Peres** \<epl.eng18@uea.edu.br\>\n
+`@author`     **Eduardo Peres** \\<epl.eng18@uea.edu.br\\>\n
 
 ## Introduction
 A project to learn more about creating a whole front-back-db web application
