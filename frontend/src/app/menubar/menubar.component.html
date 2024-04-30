@@ -1,0 +1,26 @@
+<p-menubar [model]="menuItems" >
+    <ng-template pTemplate="start">
+        <a href="/home">
+            <img src="favicon.ico" class="img-logo">
+        </a>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div class="menu-right">
+            <span class="p-input-icon-right">
+                <input pInputText 
+                    type="text" placeholder="Search for a product"
+                    [(ngModel)]="inputProduct"
+                    (keyup.enter)="onSearchButtonClicked()"
+                />
+                <i class="pi pi-search btn-search" (click)="onSearchButtonClicked()"></i>
+            </span>
+            <div class="sign-in-up">
+                <span class="flex"><a href="">Sign In</a>&nbsp;or</span>
+                <a href="">Sign Up</a> 
+            </div>
+            <div class="shopping-cart">
+                <i class="pi pi-shopping-cart btn-cart" (click)="onSearchButtonClicked()"></i>
+            </div>
+        </div>
+    </ng-template>
+</p-menubar>
