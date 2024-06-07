@@ -6,3 +6,13 @@
 .flex{
     display: flex;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    box-shadow: none;
+}
+html{
+    font-size: 100%; //dont put a fixed pixel here, bcz it breaks accessibility
+}
