@@ -13,11 +13,18 @@ import { PrimengModule } from 'src/app/primeng/primeng.module'
 //My Components
 import { AppComponent } from 'src/app/app.component';
 import { MenubarComponent } from 'src/app/menubar/menubar.component';
+import { HomeComponent } from './home/home.component';
+import { HomeSalesComponent } from './home/home-sales/home-sales.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenubarComponent
+    MenubarComponent,
+    //Home Components
+    HomeComponent,
+    HomeSalesComponent
+
+    //---- Components
   ],
   imports: [
     FormsModule,

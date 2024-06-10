@@ -1,0 +1,40 @@
+
+<section class="sec-sales">
+  <p-carousel [value]="topSales" [circular]="true" [numVisible]="4" [numScroll]="1" [responsiveOptions]="carouselResponsiveOptions">
+    <ng-template pTemplate="header">
+      <div class="sales-header">
+        Sales
+      </div>
+    </ng-template>
+    <ng-template let-sale pTemplate="item">
+      <div class="sale-container" (click)="buySaleItem()">
+        <div class="sale-name">
+          <!-- {{sale.product_name}} -->
+        </div>
+        <div class="sale-main-container">
+          <div class="sale-img">
+            <img [src]="sale.product_img">
+          </div>
+          <span class="sale-description">
+            Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
+            Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
+          </span>
+        </div>
+        <div class="sale-price-container">
+          <span class="sale-old-price">
+            <del>{{sale.old_price | currency: sale.currency}}</del>
+          </span>
+          <span class="sale-new-price">
+            {{sale.price | currency: sale.currency}}
+          </span>
+        </div>
+        <div class="sale-footer">
+          <div class="sale-timer">Termina em <strong>{{sale.countdown_timer}}</strong></div>
+          <div class="sale-button">
+            <p-button (click)="buySaleItem()">Comprar</p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
