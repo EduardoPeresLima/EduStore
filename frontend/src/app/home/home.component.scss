@@ -1,0 +1,25 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sec-categories {
+  display: flex;
+  background-color: var(--button-color);
+
+  .category-item {
+    padding: 0.5rem;
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #0c2650;
+      border-color: #fff;
+      border-style: solid;
+      border-width: 0.125rem;
+      padding: calc(0.5rem - 0.125rem);
+    }
+  }
+}
+@media screen and (orientation: landscape) {}
