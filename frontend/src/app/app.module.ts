@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 //Home Components
 import { HomeComponent } from './home/home.component';
 import { HomeSalesComponent } from './home/home-sales/home-sales.component';
+import { HomeProductsComponent } from './home/home-products/home-products.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HomeSalesComponent } from './home/home-sales/home-sales.component';
     FooterComponent,
     //Home Components
     HomeComponent,
-    HomeSalesComponent
+    HomeSalesComponent,
+    HomeProductsComponent
 
     //---- Components
   ],

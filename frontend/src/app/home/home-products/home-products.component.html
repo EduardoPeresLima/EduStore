@@ -1,0 +1,37 @@
+<section class="sec-products">
+  <p-carousel [value]="topSellingProducts" [circular]="true" [numVisible]="4" [numScroll]="1"
+    [responsiveOptions]="carouselResponsiveOptions">
+    <ng-template pTemplate="header">
+      <div class="products-header">
+        Top Selling Products
+      </div>
+    </ng-template>
+    <ng-template let-product pTemplate="item">
+      <div class="product-container" (click)="buyItem()">
+        <div class="product-name">
+          <!-- {{product.product_name}} -->
+        </div>
+        <div class="product-main-container">
+          <div class="product-img">
+            <img [src]="product.product_img">
+          </div>
+          <span class="product-description">
+            Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
+            Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
+          </span>
+        </div>
+        <div class="product-price-container">
+          <span class="product-price">
+            {{product.price | currency: product.currency}}
+          </span>
+        </div>
+        <div class="product-footer">
+          <div class="product-timer">Termina em <strong>{{product.countdown_timer}}</strong></div>
+          <div class="product-button">
+            <p-button (click)="buyItem()">Comprar</p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
