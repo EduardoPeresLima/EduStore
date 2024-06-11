@@ -1,0 +1,52 @@
+@use 'src/app/middleware/scss/mixins';
+
+.footer-container {
+  @include mixins.flex-direction-justify-align(row, space-around, center);
+  background-color: var(--background-color-footer);
+  width: 100%;
+  padding: 2rem;
+
+  .footer-item {
+    @include mixins.flex-direction-justify-align(column, start, start);
+    padding: 2rem;
+    width: 25%;
+    gap: 1rem;
+
+    .footer-logo{
+      @include mixins.flex-direction-justify-align(row, center, center);
+      gap: 1rem;
+    }
+    
+    .title {
+      @include mixins.flex-direction-justify-align(column, start, start);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .content {
+      width: 100%;
+
+      ul {
+        overflow: hidden;
+        text-wrap: wrap;
+
+        li {
+          font-size: 0.875rem;
+          list-style-type: none;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          text-wrap: balance;
+
+          &:not(:last-child) {
+            margin-bottom: 1rem;
+          }
+        }
+
+        li a:hover {
+          color: var(--link-text-color);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
