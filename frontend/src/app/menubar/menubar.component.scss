@@ -45,7 +45,7 @@
             text-decoration: none;
 
             &:visited {
-              color: blue;
+              color: var(--link-text-color);
             }
           }
         }

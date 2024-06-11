@@ -10,9 +10,13 @@ import { AppRoutingModule } from './app-routing.module';
 //My Modules
 import { PrimengModule } from 'src/app/primeng/primeng.module'
 
-//My Components
+//======================== My Components ==========================
+//Base Components
 import { AppComponent } from 'src/app/app.component';
 import { MenubarComponent } from 'src/app/menubar/menubar.component';
+import { FooterComponent } from './footer/footer.component';
+
+//Home Components
 import { HomeComponent } from './home/home.component';
 import { HomeSalesComponent } from './home/home-sales/home-sales.component';
 
@@ -20,6 +24,7 @@ import { HomeSalesComponent } from './home/home-sales/home-sales.component';
   declarations: [
     AppComponent,
     MenubarComponent,
+    FooterComponent,
     //Home Components
     HomeComponent,
     HomeSalesComponent
