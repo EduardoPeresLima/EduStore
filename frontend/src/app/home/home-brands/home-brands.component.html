@@ -1,0 +1,13 @@
+<section class="sec-brands">
+  <div class="brands-header">
+    Top Selling Brands
+  </div>
+  <div class="brands-content">
+    <div class="brand-item" *ngFor="let brand of brands">
+      <div class="brand-img-wrapper">
+        <img [src]="brand.brand_img">
+      </div>
+      <span class="brand-name">{{brand.brand_name}}</span>
+    </div>
+  </div>
+</section>
