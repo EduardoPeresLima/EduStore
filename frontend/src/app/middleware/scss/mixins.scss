@@ -5,3 +5,18 @@
   justify-content: $justify-content;
   align-items: $align-items;
 }
+
+@mixin grid-responsive($min-width: 20rem, $column-count: 5, $gap: 10px) {
+  //Code obtained and updated from https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
+  /**
+    * Calculated values.
+    */
+  $gap-count: calc($column-count - 1);
+
+  $total-gap-width: calc($gap-count * $gap);
+  $max-width: calc((100% - $total-gap-width) / $column-count);
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max($min-width, $max-width), 1fr));
+  grid-gap: $gap;
+}

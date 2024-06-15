@@ -1,0 +1,40 @@
+@use 'src/app/middleware/scss/mixins';
+
+.sec-brands {
+  @include mixins.flex-direction-justify-align(column, center, center);
+  // border: solid 1px;
+  width: 100%;
+
+  .brands-header {
+    // border: solid 1px;
+    padding: 0.5rem;
+  }
+
+  .brands-content {
+    width: 95%;
+    @include mixins.grid-responsive(20rem, 5, 10px);
+    
+    .brand-item {
+      // border: solid 1px;
+      @include mixins.flex-direction-justify-align(column, center, center);
+      padding: 1rem;
+      gap: 1rem;
+
+      .brand-img-wrapper {}
+
+      .brand-name {
+        // border: solid 1px;
+      }
+
+      box-shadow: var(--item-box-shadow-normal-color) 0px 0px 1px,
+      var(--item-box-shadow-hovered-color) 0px 0.5px 2px;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow:
+          var(--item-box-shadow-normal-color) 0px 0px 8px,
+          var(--item-box-shadow-hovered-color) 0px 0.5px 16px;
+      }
+    }
+  }
+}

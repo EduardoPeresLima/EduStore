@@ -20,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { HomeSalesComponent } from './home/home-sales/home-sales.component';
 import { HomeProductsComponent } from './home/home-products/home-products.component';
+import { HomeBrandsComponent } from './home/home-brands/home-brands.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeProductsComponent } from './home/home-products/home-products.compon
     //Home Components
     HomeComponent,
     HomeSalesComponent,
-    HomeProductsComponent
+    HomeProductsComponent,
+    HomeBrandsComponent
 
     //---- Components
   ],
