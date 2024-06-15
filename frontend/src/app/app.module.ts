@@ -22,6 +22,9 @@ import { HomeSalesComponent } from './home/home-sales/home-sales.component';
 import { HomeProductsComponent } from './home/home-products/home-products.component';
 import { HomeBrandsComponent } from './home/home-brands/home-brands.component';
 
+//User Components
+import { RegisterUserComponent } from './register-user/register-user.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,10 @@ import { HomeBrandsComponent } from './home/home-brands/home-brands.component';
     HomeComponent,
     HomeSalesComponent,
     HomeProductsComponent,
-    HomeBrandsComponent
+    HomeBrandsComponent,
+
+    //User Components
+    RegisterUserComponent
 
     //---- Components
   ],
