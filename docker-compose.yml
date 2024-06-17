@@ -5,7 +5,7 @@ services:
     image: eduperes/edustore-frontend
     build: 
       context: ./frontend
-      no_cache: false #Set to true to make a clean build
+      no_cache: true #Set to true to make a clean build
     ports: 
       - 4200:4200
   backend:
@@ -14,7 +14,7 @@ services:
       - database
     build: 
       context: ./backend
-      no_cache: false #Set to true to make a clean build
+      no_cache: true #Set to true to make a clean build
     environment:
       - ENV_FILE_PATH=environments/.env.${SHORT_ENV}
     ports:
