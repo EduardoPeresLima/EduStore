@@ -1,48 +1,7 @@
-<section class="register-user">
-  <header class="header-wrapper">
-    <span class="title">
-      Register User
-    </span>
-  </header>
-  <form class="form">
-    <div class="input-wrapper">
-      <span class="p-float-label input-container">
-        <input pInputText class="inp-full-name" [maxLength]="50" />
-        <label htmlFor="inp-full-name">Full Name</label>
-      </span>
-    </div>
-    <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <p-inputMask pInputMask id="inp-cpf" placeholder="CPF" mask="999.999.999-99" />
-        <label htmlFor="inp-cpf">CPF</label>
-      </div>
-    </div>
-    <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <p-calendar id="inp-birth-date"></p-calendar>
-        <label htmlFor="inp-birth-date">Birth Date</label>
-      </div>
-    </div>
-    <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <input pInputText class="inp-email" type="email" />
-        <label htmlFor="inp-full-name">E-mail</label>
-      </div>
-    </div>
-    <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <input pInputText class="inp-password" type="password" />
-        <label htmlFor="inp-full-name">Password</label>
-      </div>
-    </div>
-    <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <input pInputText class="inp-confirm-password" type="password" />
-        <label htmlFor="inp-full-name">Confirm Password</label>
-      </div>
-    </div>
-  </form>
-  <div class="button-wrapper">
-    <button pButton class="btn-continue" (click)="continueRegisterUserForm()">Continue</button>
-  </div>
-</section>
+<app-register-user-main-info *ngIf="registerStep == RegisterStep.UserMainData"
+  (finishForm)="this.setRegisterStep(RegisterStep.UserAddress)">
+</app-register-user-main-info>
+<app-register-user-address *ngIf="registerStep == RegisterStep.UserAddress"
+  (finishForm)="this.setRegisterStep(RegisterStep.UserMainData)">
+</app-register-user-address>
+<p-toast></p-toast>

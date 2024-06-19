@@ -1,0 +1,49 @@
+
+<section class="register-user">
+  <header class="header-wrapper">
+    <span class="title">
+      Add Address
+    </span>
+  </header>
+  <form class="form">
+    <div class="input-wrapper">
+      <div class="p-float-label input-container">
+        <p-inputMask pInputMask id="inp-postal-code" mask="99999-999"/>
+        <label htmlFor="inp-postal-code">Postal Code</label>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <span class="p-float-label input-container">
+        <input pInputText id="inp-country" [maxLength]="100" />
+        <label htmlFor="inp-country">Country</label>
+      </span>
+    </div>
+    <div class="input-wrapper">
+      <span class="p-float-label input-container">
+        <input pInputText id="inp-state" [maxLength]="100" />
+        <label htmlFor="inp-state">State</label>
+      </span>
+    </div>
+    <div class="input-wrapper">
+      <span class="p-float-label input-container">
+        <input pInputText id="inp-city" [maxLength]="100" />
+        <label htmlFor="inp-city">City</label>
+      </span>
+    </div>
+    <div class="input-wrapper">
+      <span class="p-float-label input-container">
+        <input pInputText id="inp-street" [maxLength]="100" />
+        <label htmlFor="inp-street">Street</label>
+      </span>
+    </div>
+    <div class="input-wrapper">
+      <span class="p-float-label input-container">
+        <input pInputText id="inp-number" [maxLength]="10" type="number" />
+        <label htmlFor="inp-number">Number</label>
+      </span>
+    </div>
+  </form>
+  <div class="button-wrapper">
+    <button pButton class="btn-continue" (click)="continueRegisterUserForm()">Finish Register</button>
+  </div>
+</section>

@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
 
+enum RegisterStep {
+    UserMainData,
+    UserAddress
+}
+
 @Component({
-  selector: 'app-register-user',
-  templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.scss']
+    selector: 'app-register-user',
+    templateUrl: './register-user.component.html',
+    styleUrls: ['./register-user.component.scss']
 })
 export class RegisterUserComponent {
-    items:number[] = [0,0,0,0,0,0]
-    continueRegisterUserForm(){
-        
+    RegisterStep = RegisterStep;
+
+    registerStep: RegisterStep = RegisterStep.UserMainData
+    setRegisterStep(newRegisterStep: RegisterStep) {
+        this.registerStep = newRegisterStep
     }
+
 }
