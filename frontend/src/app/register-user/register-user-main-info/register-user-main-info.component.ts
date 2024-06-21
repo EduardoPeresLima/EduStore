@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AbstractControlOptions, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -9,8 +9,9 @@ import { MessageService } from 'primeng/api';
 })
 export class RegisterUserMainInfoComponent {
     @Output() finishForm = new EventEmitter();
-
+    submitted = false;
     mainDataFormGroup: FormGroup;
+    get form() { return this.mainDataFormGroup.controls }
     constructor(
         private formBuilder: FormBuilder,
         private messageService: MessageService,
@@ -20,26 +21,54 @@ export class RegisterUserMainInfoComponent {
             phoneNumber: [null, [Validators.required]],
             birthDate: [null, [Validators.required]],
             email: [null, [Validators.required, Validators.maxLength(320), Validators.email]],
-            password: [null, [Validators.required, Validators.maxLength(50)]],
-            confirmPassword: [null, [Validators.required, Validators.maxLength(50)]],
+            password: [null, [
+                Validators.required,
+                Validators.minLength(8),
+                this.patternValidator(new RegExp("(?=.*[0-9])"), { requiresDigit: true }),
+                this.patternValidator(new RegExp("(?=.*[A-Z])"), { requiresUppercase: true }),
+                this.patternValidator(new RegExp("(?=.*[a-z])"), { requiresLowercase: true }),
+                this.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), { requiresSpecialChars: true })
+            ]],
+            confirmPassword: [null, [Validators.required, Validators.minLength(8)]]
+        }, {
+            validators: this.matchPasswordsValidator
         });
     }
 
+    patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
+        return (control: AbstractControl): { [key: string]: any } | null => {
+            if (!control.value)
+                return null;
+
+            const valid = regex.test(control.value);
+            return valid ? null : error;
+        };
+    }
+    matchPasswordsValidator(control: AbstractControl) {
+        const password: string = control.get("password")?.value;
+        const confirmPasswordControl: AbstractControl | null = control.get("confirmPassword");
+        const confirmPassword: string = confirmPasswordControl?.value;
+
+        if (!confirmPassword?.length || confirmPassword.length < 8)
+            return;
+        if (password !== confirmPassword)
+            confirmPasswordControl?.setErrors({ mismatch: true });
+        else if (confirmPasswordControl?.hasError('mismatch')) {
+            delete confirmPasswordControl?.errors?.['mismatch'];
+            control.updateValueAndValidity();
+        }
+    }
     continueRegisterUserForm() {
-        if(this.mainDataFormGroup.invalid){
+        if (this.mainDataFormGroup.invalid) {
             this.messageService.add({
                 severity: 'error',
-                summary: 'Invalid Form', 
+                summary: 'Invalid Form',
                 detail: 'The form is invalid'
             })
         }
-        else{
+        else {
             const formData = this.mainDataFormGroup.value
-            console.log(formData)
-            // let mainData = {
-                
-            // }
-            this.finishForm.emit()
+            this.finishForm.emit(formData)
         }
     }
 }

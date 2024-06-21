@@ -1,4 +1,3 @@
-
 <section class="register-user">
   <header class="header-wrapper">
     <span class="title">
@@ -7,10 +6,41 @@
   </header>
   <form class="form" [formGroup]="mainDataFormGroup">
     <div class="input-wrapper">
-      <span class="p-float-label input-container">
-        <input pInputText id="inp-full-name" [maxLength]="50" formControlName="fullName"/>
-        <label htmlFor="inp-full-name">Full Name</label>
-      </span>
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-full-name" [maxLength]="50" formControlName="fullName" />
+          <label htmlFor="inp-full-name">Full Name</label>
+        </div>
+
+        <div *ngIf="(form.fullName.touched || form.fullName.dirty) && form.fullName.errors">
+          <small class="label-invalid" *ngIf="form.fullName.errors?.required">Full name is required</small>
+          <small class="label-invalid" *ngIf="form.fullName.errors?.maxlength">Name is too long</small>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <p-inputMask pInputMask id="inp-phone" mask="(99) 99999-9999" type="tel" formControlName="phoneNumber" [unmask]="true"/>
+          <label htmlFor="inp-phone">Phone Number</label>
+        </div>
+
+        <div *ngIf="(form.phoneNumber.touched || form.phoneNumber.dirty) && form.phoneNumber.errors">
+          <small class="label-invalid" *ngIf="form.phoneNumber.errors?.required">Phone Number is required</small>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <p-calendar id="inp-birth-date" formControlName="birthDate" dateFormat="dd/mm/yy"></p-calendar>
+          <label htmlFor="inp-birth-date">Birth Date</label>
+        </div>
+
+        <div *ngIf="(form.birthDate.touched || form.birthDate.dirty) && form.birthDate.errors">
+          <small class="label-invalid" *ngIf="form.birthDate.errors?.required">Birth Date is required</small>
+        </div>
+      </div>
     </div>
     <!-- <div class="input-wrapper">
       <div class="p-float-label input-container">
@@ -19,35 +49,71 @@
       </div>
     </div> -->
     <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <p-inputMask pInputMask id="inp-phone" mask="(99) 99999-9999" type="tel" formControlName="phoneNumber" [unmask]="true"/>
-        <label htmlFor="inp-phone">Phone Number</label>
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-email" type="email" [maxLength]="320" formControlName="email" />
+          <label htmlFor="inp-email">E-mail </label>
+        </div>
+
+        <div *ngIf="(form.email.touched || form.email.dirty) && form.email.errors">
+          <small class="label-invalid" *ngIf="form.email.errors?.required">Email is required</small>
+          <small class="label-invalid" *ngIf="form.email.errors?.email">Email is not valid</small>
+          <small class="label-invalid" *ngIf="form.email.errors?.maxlength">Email is too long</small>
+        </div>
       </div>
     </div>
+
     <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <p-calendar id="inp-birth-date" formControlName="birthDate"></p-calendar>
-        <label htmlFor="inp-birth-date">Birth Date</label>
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-password" type="password" [maxLength]="50" formControlName="password" />
+          <label htmlFor="inp-password">Password</label>
+        </div>
+
+        <div *ngIf="(form.password.touched || form.password.dirty) && form.password.errors">
+          <small class="label-invalid" *ngIf="form.password.errors?.required">Password is required</small>
+          <div *ngIf="!form.password.errors?.required" style="display:flex; flex-direction: column;">
+            <div class="label-size" [ngClass]="form.password.errors.minlength ?'label-invalid':'label-valid'">
+              <i [ngClass]="form.password.errors.minlength?'pi pi-ban' : 'pi pi-check-circle'"></i>
+              <small>At least 8 characters long</small>
+            </div>
+            <div class="label-size" [ngClass]="form.password.errors.requiresDigit ?'label-invalid':'label-valid'">
+              <i [ngClass]="form.password.errors.requiresDigit?'pi pi-ban' : 'pi pi-check-circle'"></i>
+              <small>At least 1 digit</small>
+            </div>
+            <div class="label-size" [ngClass]="form.password.errors.requiresUppercase ?'label-invalid':'label-valid'">
+              <i [ngClass]="form.password.errors.requiresUppercase?'pi pi-ban' : 'pi pi-check-circle'"></i>
+              <small>At least 1 uppercase character</small>
+            </div>
+            <div class="label-size" [ngClass]="form.password.errors.requiresLowercase ?'label-invalid':'label-valid'">
+              <i [ngClass]="form.password.errors.requiresLowercase?'pi pi-ban' : 'pi pi-check-circle'"></i>
+              <small>At least 1 lowercase character</small>
+            </div>
+            <div class="label-size"
+              [ngClass]="form.password.errors.requiresSpecialChars ?'label-invalid':'label-valid'">
+              <i [ngClass]="form.password.errors.requiresSpecialChars?'pi pi-ban' : 'pi pi-check-circle'"></i>
+              <small>At least 1 special character</small>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <input pInputText id="inp-email" type="email" [maxLength]="320" formControlName="email"/>
-        <label htmlFor="inp-email">E-mail </label>
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-confirm-password" type="password" [maxLength]="50"
+            formControlName="confirmPassword" />
+          <label htmlFor="inp-confirm-password">Confirm Password</label>
+        </div>
+        <div *ngIf="(form.confirmPassword.touched || form.confirmPassword.dirty) && form.confirmPassword.errors">
+          <small class="label-invalid" *ngIf="form.confirmPassword.errors?.required">Confirm your password</small>
+          <small class="label-invalid" *ngIf="form.confirmPassword.errors?.minlength">At least 8 characters long</small>
+          <small class="label-invalid" *ngIf="form.confirmPassword.errors?.mismatch">Passwords don't match</small>
+        </div>
       </div>
     </div>
-    <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <input pInputText id="inp-password" type="password" [maxLength]="50" formControlName="password"/>
-        <label htmlFor="inp-password">Password</label>
-      </div>
-    </div>
-    <div class="input-wrapper">
-      <div class="p-float-label input-container">
-        <input pInputText id="inp-confirm-password" type="password" [maxLength]="50" formControlName="confirmPassword"/>
-        <label htmlFor="inp-confirm-password">Confirm Password</label>
-      </div>
-    </div>
+
   </form>
   <div class="button-wrapper">
     <button pButton class="btn-continue" (click)="continueRegisterUserForm()">Continue</button>

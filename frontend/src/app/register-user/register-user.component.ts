@@ -13,8 +13,9 @@ enum RegisterStep {
 export class RegisterUserComponent {
     RegisterStep = RegisterStep;
 
-    registerStep: RegisterStep = RegisterStep.UserMainData
-    setRegisterStep(newRegisterStep: RegisterStep) {
+    registerStep: RegisterStep = RegisterStep.UserAddress
+    setRegisterStep(event:any, newRegisterStep: RegisterStep) {
+        console.log(event)
         this.registerStep = newRegisterStep
     }
 

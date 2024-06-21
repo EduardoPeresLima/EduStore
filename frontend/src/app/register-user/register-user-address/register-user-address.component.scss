@@ -22,29 +22,64 @@
       .input-wrapper {
         @include mixins.flex-direction-justify-align(row, center, center);
 
-        .input-container {
+        .input-content {
           width: 20rem;
-          height: 2rem;
+          // height: 2rem;
 
-          input {
+          .input-container {
             width: 100%;
-            height: 100%;
-            padding: 0 0.5rem;
-          }
+            height: 2rem;
 
-          .p-calendar {
-            width: 100%;
-            height: 100%;
+            input {
+              width: 100%;
+              height: 100%;
+              padding: 0 0.5rem;
 
-            table {
-              tr td {
-                padding: 0;
+              &.ng-touched.ng-invalid {
+                border-color: var(--fail);
+
+                &+label {
+                  color: var(--fail);
+                }
               }
+
+              &.ng-touched.ng-valid {
+                border-color: var(--success);
+
+                &+label {
+                  color: var(--success);
+                }
+              }
+            }
+
+            p-inputmask{
+              &.ng-touched.ng-invalid {
+                input {
+                  border-color: var(--fail);
+                }
+
+                &+label {
+                  color: var(--fail);
+                }
+              }
+
+              &.ng-touched.ng-valid {
+                input {
+                  border-color: var(--success);
+                }
+
+                &+label {
+                  color: var(--success);
+                }
+              }
+            }
+            >label {
+              margin-top: -0.5rem;
             }
           }
 
-          >label {
-            margin-top: -0.5rem;
+          .label-invalid {
+            color: red;
           }
         }
       }

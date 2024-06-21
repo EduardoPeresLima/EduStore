@@ -1,7 +1,7 @@
 <app-register-user-main-info *ngIf="registerStep == RegisterStep.UserMainData"
-  (finishForm)="this.setRegisterStep(RegisterStep.UserAddress)">
+  (finishForm)="this.setRegisterStep($event,RegisterStep.UserAddress)">
 </app-register-user-main-info>
 <app-register-user-address *ngIf="registerStep == RegisterStep.UserAddress"
-  (finishForm)="this.setRegisterStep(RegisterStep.UserMainData)">
+  (finishForm)="this.setRegisterStep($event,RegisterStep.UserMainData)">
 </app-register-user-address>
 <p-toast></p-toast>
