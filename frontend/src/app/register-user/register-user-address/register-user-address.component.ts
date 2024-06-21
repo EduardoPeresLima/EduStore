@@ -12,9 +12,6 @@ export class RegisterUserAddressComponent {
 
     addressFormGroup: FormGroup;
     get form() { return this.addressFormGroup.controls }
-    continueRegisterUserForm(){
-        this.finishForm.emit()
-    }
     constructor(
         private formBuilder: FormBuilder,
         private messageService: MessageService,
@@ -29,4 +26,17 @@ export class RegisterUserAddressComponent {
         });
     }
 
+    continueRegisterUserForm() {
+        if (this.addressFormGroup.invalid) {
+            this.messageService.add({
+                severity: 'error',
+                summary: 'Invalid Form',
+                detail: 'The form is invalid'
+            })
+        }
+        else {
+            const formData = this.addressFormGroup.value
+            this.finishForm.emit(formData)
+        }
+    }
 }
