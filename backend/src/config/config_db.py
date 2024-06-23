@@ -7,20 +7,21 @@ config = get_environment_config()
 
 
 DATABASE_DIALECT = 'mysql+aiomysql'
-DATABASE_USER = 'root'
+DATABASE_USER = config.get('DATABASE_USER')
 DATABASE_PASSWORD = config.get('DATABASE_PASSWORD')
 DATABASE_HOST = config.get('DATABASE_HOST')
-DATABASE = 'project_db'
+DATABASE_NAME = config.get('DATABASE_NAME')
 
 ECHO = False if config.get('ECHO', "False") == 'False' else True
 
 
 DATABASE_URL = \
-    f'{DATABASE_DIALECT}://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}/{DATABASE}'
- 
+    f'{DATABASE_DIALECT}://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}/{DATABASE_NAME}'
 
+
+# engine = create_async_engine(DATABASE_URL, echo=ECHO, connect_args={'check_same_thread':False})
 engine = create_async_engine(DATABASE_URL, echo=ECHO)
-async_session  = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+async_session  = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False, autocommit=False, autoflush=False)
 
 origins = [
     "*" # Temporary. Just to Test the frontend

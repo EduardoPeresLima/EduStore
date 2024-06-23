@@ -26,7 +26,6 @@ export class RegisterUserComponent {
             ...this.userData,
             ...event
         }
-        console.log(this.userData)
     }
 
 }

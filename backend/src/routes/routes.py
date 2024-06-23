@@ -1,7 +1,7 @@
-# from . import (
-
-# )
+from . import (
+    buyer_router
+)
 
 routes = [
-
+    buyer_router
 ]
