@@ -8,6 +8,12 @@ from ..model import buyer_model
 
 bcrypt_context = CryptContext(schemes=['bcrypt'])
 
+async def get_all_buyers(db: AsyncSession):
+    try:
+        return await buyer_repository.get_all_buyers(db)
+    
+    except Exception as ex:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Server Error")
 
 # CREATE operations
 async def create_buyer(db: AsyncSession, buyer_request: buyer_schema.BuyerCreate):

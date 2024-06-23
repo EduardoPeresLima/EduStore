@@ -2,8 +2,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy import or_, update, delete, insert
 
-from ..schemas import buyer_schema
 from ..model import buyer_model
+
+async def get_all_buyers(db: AsyncSession):
+    response = await db.execute(
+        select(buyer_model.Buyer)
+    )
+    return response.scalars().all()
 
 async def get_buyer_by_email(db: AsyncSession, email: str):
     response = await db.execute(
