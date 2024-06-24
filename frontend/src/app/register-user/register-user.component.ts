@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BuyerService } from '../services/buyer/buyer.service';
 import { BuyerCreate } from 'src/app/interfaces/buyer';
 import { AddressCreateWithBuyer } from 'src/app/interfaces/address';
+import { AuthService } from '../services/auth/auth.service';
 
 enum RegisterStep {
     UserMainData,
@@ -22,7 +23,8 @@ export class RegisterUserComponent {
     registerStep: RegisterStep = RegisterStep.UserMainData
 
     constructor(
-        private buyerService: BuyerService
+        private buyerService: BuyerService,
+        private authService: AuthService
     ){}
 
     setRegisterStep(event:any, newRegisterStep: RegisterStep) {
@@ -44,7 +46,7 @@ export class RegisterUserComponent {
             street: event.street,
             residence_number: event.number,
         }
-        this.buyerService.createBuyerWithAddress(buyer, address).subscribe({
+        this.authService.createBuyerWithAddress(buyer, address).subscribe({
             next: (response:any) => {
                 console.log(response)
             },
