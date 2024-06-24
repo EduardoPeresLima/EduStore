@@ -1,0 +1,128 @@
+@use 'src/app/middleware/scss/mixins';
+
+:host::ng-deep {
+  .register-user {
+    @include mixins.flex-direction-justify-align(column, start, start);
+    gap: 1rem;
+    margin: 1rem 5rem;
+
+    .header-wrapper {
+      @include mixins.flex-direction-justify-align(row, center, center);
+      width: 100%;
+
+      .title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .form {
+      width: 100%;
+      @include mixins.grid-responsive(20rem, 2, 2rem);
+
+      .input-wrapper {
+        @include mixins.flex-direction-justify-align(row, center, center);
+
+        .input-content {
+          width: 20rem;
+          // height: 2rem;
+
+          .input-container {
+            width: 100%;
+            height: 2rem;
+
+            input {
+              width: 100%;
+              height: 100%;
+              padding: 0 0.5rem;
+
+              &.ng-touched.ng-invalid {
+                border-color: var(--fail);
+
+                &+label {
+                  color: var(--fail);
+                }
+              }
+
+              &.ng-touched.ng-valid {
+                border-color: var(--success);
+
+                &+label {
+                  color: var(--success);
+                }
+              }
+            }
+
+            p-inputmask,
+            p-calendar {
+              &.ng-touched.ng-invalid {
+                input {
+                  border-color: var(--fail);
+                }
+
+                &+label {
+                  color: var(--fail);
+                }
+              }
+
+              &.ng-touched.ng-valid {
+                input {
+                  border-color: var(--success);
+                }
+
+                &+label {
+                  color: var(--success);
+                }
+              }
+            }
+
+            p-calendar {
+              .p-calendar {
+                width: 100%;
+                height: 100%;
+
+                table {
+                  tr td {
+                    padding: 0;
+                  }
+                }
+              }
+            }
+
+            >label {
+              margin-top: -0.5rem;
+            }
+          }
+          
+          .label-size {
+            display: flex;
+            gap: 0.2rem;
+            margin-top: 0.2rem;
+          }
+
+          .label-valid {
+            color: green;
+          }
+
+          .label-invalid {
+            color: red;
+          }
+        }
+      }
+    }
+
+    .button-wrapper {
+      @include mixins.flex-direction-justify-align(row, center, center);
+      width: 100%;
+      height: 100%;
+
+      button {
+        width: 20rem;
+        height: 2rem;
+        border-radius: 7.5px;
+        background-color: mediumslateblue;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

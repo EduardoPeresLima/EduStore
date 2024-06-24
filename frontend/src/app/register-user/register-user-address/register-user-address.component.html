@@ -1,0 +1,85 @@
+
+<section class="register-user">
+  <header class="header-wrapper">
+    <span class="title">
+      Add Address
+    </span>
+  </header>
+  <form class="form"  [formGroup]="addressFormGroup">
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <p-inputMask pInputMask id="inp-postal-code" mask="99999-999" formControlName="postalCode" [unmask]="true"/>
+          <label htmlFor="inp-postal-code">Postal Code</label>
+        </div>
+
+        <div *ngIf="(form.postalCode.touched || form.postalCode.dirty) && form.postalCode.errors">
+          <small class="label-invalid" *ngIf="form.postalCode.errors?.required">Postal Code is required</small>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-country" [maxLength]="100" formControlName="country" />
+          <label htmlFor="inp-country">Country</label>
+        </div>
+
+        <div *ngIf="(form.country.touched || form.country.dirty) && form.country.errors">
+          <small class="label-invalid" *ngIf="form.country.errors?.required">Country is required</small>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-state" [maxLength]="100" formControlName="state" />
+          <label htmlFor="inp-state">State</label>
+        </div>
+
+        <div *ngIf="(form.state.touched || form.state.dirty) && form.state.errors">
+          <small class="label-invalid" *ngIf="form.state.errors?.required">State is required</small>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-city" [maxLength]="100" formControlName="city" />
+          <label htmlFor="inp-city">City</label>
+        </div>
+
+        <div *ngIf="(form.city.touched || form.city.dirty) && form.city.errors">
+          <small class="label-invalid" *ngIf="form.city.errors?.required">City is required</small>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-street" [maxLength]="100" formControlName="street" />
+          <label htmlFor="inp-street">Street</label>
+        </div>
+
+        <div *ngIf="(form.street.touched || form.street.dirty) && form.street.errors">
+          <small class="label-invalid" *ngIf="form.street.errors?.required">Street is required</small>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-number" [maxLength]="10" type="number" formControlName="number"/>
+          <label htmlFor="inp-number">Number</label>
+        </div>
+
+        <div *ngIf="(form.number.touched || form.number.dirty) && form.number.errors">
+          <small class="label-invalid" *ngIf="form.number.errors?.required">Number is required</small>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="button-wrapper">
+    <button pButton class="btn-continue" (click)="continueRegisterUserForm()">Finish Register</button>
+  </div>
+</section>

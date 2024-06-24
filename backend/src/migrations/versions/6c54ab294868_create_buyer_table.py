@@ -23,7 +23,7 @@ def upgrade() -> None:
         table_name, 
         sa.Column('id', sa.Integer, primary_key=True, comment="Buyer's Identifier"),
         sa.Column('name', sa.String(50), nullable=False, comment="Buyer's name"),
-        sa.Column('password', sa.String(50), nullable=False, comment="Buyer's password hashed"),
+        sa.Column('password', sa.String(60), nullable=False, comment="Buyer's password hashed"),
         sa.Column('primary_email', sa.String(320), nullable=False, comment="Buyer's primary email"),
         sa.Column('secondary_email', sa.String(320), nullable=True, comment="Buyer's secondary email, can be null"),
         sa.Column('primary_phone_number', sa.String(20), nullable=False, comment="Buyer's primary phone number"),
