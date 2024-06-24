@@ -21,4 +21,3 @@ async def get_buyer_by_email(db: AsyncSession, email: str):
 
 async def create_buyer(db: AsyncSession, buyer: buyer_model.Buyer):
     db.add(buyer)
-    return buyer

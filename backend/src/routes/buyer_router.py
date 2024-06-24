@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from starlette import status
 
 from ..middleware.utils_db import get_session
-from ..schemas import buyer_schema
+from ..schemas import buyer_schema,address_schema
 from ..controllers import buyer_controller
 #Validation on Path
 #Validation on Query
@@ -24,12 +24,13 @@ async def create_buyer(
 ):
     return await buyer_controller.create_buyer(db, buyer)
 
-# @router.post("/buyer_with_address", status_code=status.HTTP_201_CREATED)
-# async def create_buyer_with_address(
-#     buyer: buyer_schema.BuyerCreate, 
-#     db: AsyncSession = Depends(get_session)
-# ):
-    return await buyer_controller.create_buyer(db, buyer)
+@router.post("/buyer_with_address", status_code=status.HTTP_201_CREATED)
+async def create_buyer_with_address(
+    buyer: buyer_schema.BuyerCreate, 
+    address: address_schema.AddressCreateWithBuyer,
+    db: AsyncSession = Depends(get_session)
+):
+    return await buyer_controller.create_buyer_with_address(db, buyer, address)
 
 # @router.get("/{buyer_email}", response_model=buyer_schema.Buyer)
 # async def get_buyer_by_email_path(buyer_email: str = Path(max_length=320)):

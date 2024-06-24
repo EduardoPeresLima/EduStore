@@ -15,6 +15,7 @@ class BuyerCreate(BaseModel):
                 'primary_phone_number': '99912345678',
             }
         }
+
 class Buyer(BaseModel):
     id: int
     name: str

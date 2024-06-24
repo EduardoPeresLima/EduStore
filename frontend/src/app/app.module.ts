@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 //Routing Modules
 import { AppRoutingModule } from './app-routing.module';
 
 //My Modules
-import { PrimengModule } from 'src/app/primeng/primeng.module'
+import { PrimengModule } from 'src/app/modules/primeng.module'
 
 //======================== My Components ==========================
 //Base Components
@@ -52,6 +53,8 @@ import { RegisterUserMainInfoComponent } from './register-user/register-user-mai
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        HttpClientModule,
+
         PrimengModule
     ],
     providers: [],
