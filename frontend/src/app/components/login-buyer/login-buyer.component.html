@@ -1,1 +1,45 @@
-<p>login-buyer works!</p>
+
+<section class="login-user">
+  <header class="header-wrapper">
+    <span class="title">
+      Login
+    </span>
+  </header>
+  <form class="form"  [formGroup]="loginBuyerFormGroup">
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-email" type="email" [maxLength]="320" formControlName="email" />
+          <label htmlFor="inp-email">E-mail </label>
+        </div>
+
+        <div *ngIf="(form.email.touched || form.email.dirty) && form.email.errors">
+          <small class="label-invalid" *ngIf="form.email.errors?.required">Email is required</small>
+          <small class="label-invalid" *ngIf="form.email.errors?.email">Email is not valid</small>
+          <small class="label-invalid" *ngIf="form.email.errors?.maxlength">Email is too long</small>
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <div class="input-content">
+        <div class="p-float-label input-container">
+          <input pInputText id="inp-password" type="password" [maxLength]="50" formControlName="password" />
+          <label htmlFor="inp-password">Password</label>
+        </div>
+
+        <div *ngIf="(form.password.touched || form.password.dirty) && form.password.errors">
+          <small class="label-invalid" *ngIf="form.password.errors?.required">Password is required</small>
+          <div *ngIf="!form.password.errors?.required" style="display:flex; flex-direction: column;">
+            <div class="label-size" [ngClass]="form.password.errors.minlength ?'label-invalid':'label-valid'">
+              <small>At least 8 characters long</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="button-wrapper">
+    <button pButton class="btn-continue" (click)="finishLoginBuyer()">Login</button>
+  </div>
+</section>
+<p-toast></p-toast>

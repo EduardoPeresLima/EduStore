@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddressCreateWithBuyer } from 'src/app/interfaces/address';
-import { BuyerCreate } from 'src/app/interfaces/buyer';
+import { BuyerCreate, BuyerLogin } from 'src/app/interfaces/buyer';
 
 @Injectable({
     providedIn: 'root'
@@ -23,5 +23,9 @@ export class AuthService {
     createBuyerWithAddress(buyerData: BuyerCreate, addressData: AddressCreateWithBuyer) {
         const url = `${this.authURL}/buyer_with_address`
         return this.http.post<any>(url, { 'buyer': buyerData, 'address': addressData }, this.httpOptionsJson,);
+    }
+    loginBuyer(buyerData: BuyerLogin){
+        const url = `${this.authURL}/login`
+        return this.http.post<any>(url, { 'username': buyerData.email, 'password': buyerData.password }, this.httpOptionsJson,);
     }
 }
