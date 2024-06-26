@@ -14,19 +14,20 @@ import { PrimengModule } from 'src/app/modules/primeng.module'
 //======================== My Components ==========================
 //Base Components
 import { AppComponent } from 'src/app/app.component';
-import { MenubarComponent } from 'src/app/menubar/menubar.component';
-import { FooterComponent } from './footer/footer.component';
+import { MenubarComponent } from 'src/app/components/menubar/menubar.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 
 //Home Components
-import { HomeComponent } from './home/home.component';
-import { HomeSalesComponent } from './home/home-sales/home-sales.component';
-import { HomeProductsComponent } from './home/home-products/home-products.component';
-import { HomeBrandsComponent } from './home/home-brands/home-brands.component';
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { HomeSalesComponent } from 'src/app/components/home/home-sales/home-sales.component';
+import { HomeProductsComponent } from 'src/app/components/home/home-products/home-products.component';
+import { HomeBrandsComponent } from 'src/app/components/home/home-brands/home-brands.component';
 
 //User Components
-import { RegisterUserComponent } from './register-user/register-user.component';
-import { RegisterUserAddressComponent } from './register-user/register-user-address/register-user-address.component';
-import { RegisterUserMainInfoComponent } from './register-user/register-user-main-info/register-user-main-info.component';
+import { RegisterUserComponent } from 'src/app/components/register-user/register-user.component';
+import { RegisterUserAddressComponent } from 'src/app/components/register-user/register-user-address/register-user-address.component';
+import { RegisterUserMainInfoComponent } from 'src/app/components/register-user/register-user-main-info/register-user-main-info.component';
+import { LoginBuyerComponent } from 'src/app/components/login-buyer/login-buyer.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { RegisterUserMainInfoComponent } from './register-user/register-user-mai
         //User Components
         RegisterUserComponent,
         RegisterUserAddressComponent,
-        RegisterUserMainInfoComponent
+        RegisterUserMainInfoComponent,
+        LoginBuyerComponent
 
         //---- Components
     ],

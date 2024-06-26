@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { BuyerService } from '../services/buyer/buyer.service';
+import { BuyerService } from 'src/app/services/buyer/buyer.service';
 import { BuyerCreate } from 'src/app/interfaces/buyer';
 import { AddressCreateWithBuyer } from 'src/app/interfaces/address';
-import { AuthService } from '../services/auth/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 enum RegisterStep {
     UserMainData,
