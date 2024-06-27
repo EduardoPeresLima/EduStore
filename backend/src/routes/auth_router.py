@@ -22,10 +22,15 @@ async def login_for_access_token(
     if not buyer:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Could not validade credentials')
     token = auth.create_access_token(buyer.primary_email, buyer.id, role='buyer')
-    return {
-        'access_token': token,
-        'token_type': 'bearer'
-    }
+    return auth_schema.Token(
+        access_token=token,
+        token_type='bearer',
+        user_data=auth_schema.UserData(
+            user_id=buyer.id,
+            username=buyer.name,
+            role='buyer'
+        )
+    )
 
 @router.post("/buyer", status_code=status.HTTP_201_CREATED)
 async def create_buyer(

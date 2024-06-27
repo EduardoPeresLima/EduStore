@@ -11,9 +11,13 @@
           (keyup.enter)="onSearchButtonClicked()" />
         <i class="pi pi-search btn-search" (click)="onSearchButtonClicked()"></i>
       </span>
-      <div class="sign-in-up">
-        <span class="flex"><a href="/home">Sign In</a>&nbsp;or</span>
+      <div class="sign-in-up" *ngIf="!userLogged">
+        <span class="flex"><a href="/login">Sign In</a>&nbsp;or</span>
         <a href="/register">Sign Up</a>
+      </div>
+      <div class="sign-in-up" *ngIf="userLogged">
+        <span>{{userData.username}}</span>
+        <a href="/home" (click)="logout()"><span>Logout</span></a>
       </div>
       <div class="shopping-cart">
         <i class="pi pi-shopping-cart btn-cart" (click)="onSearchButtonClicked()"></i>

@@ -4,3 +4,8 @@ export interface BuyerCreate {
     password: string
     primary_phone_number: string
 }
+
+export interface BuyerLogin{
+    email: string,
+    password: string
+}
