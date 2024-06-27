@@ -28,6 +28,7 @@ import { RegisterUserComponent } from 'src/app/components/register-user/register
 import { RegisterUserAddressComponent } from 'src/app/components/register-user/register-user-address/register-user-address.component';
 import { RegisterUserMainInfoComponent } from 'src/app/components/register-user/register-user-main-info/register-user-main-info.component';
 import { LoginBuyerComponent } from 'src/app/components/login-buyer/login-buyer.component';
+import { BuyerAccountComponent } from './components/buyer-account/buyer-account.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { LoginBuyerComponent } from 'src/app/components/login-buyer/login-buyer.
         RegisterUserComponent,
         RegisterUserAddressComponent,
         RegisterUserMainInfoComponent,
-        LoginBuyerComponent
+        LoginBuyerComponent,
+        BuyerAccountComponent
 
         //---- Components
     ],

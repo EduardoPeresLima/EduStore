@@ -6,6 +6,11 @@
   align-items: $align-items;
 }
 
+@mixin width-and-height($width, $height) {
+    width: $width;
+    height: $height;
+  }
+
 @mixin grid-responsive($min-width: 20rem, $column-count: 5, $gap: 10px) {
   //Code obtained and updated from https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
   /**

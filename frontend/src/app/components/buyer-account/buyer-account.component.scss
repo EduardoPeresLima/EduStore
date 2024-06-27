@@ -1,0 +1,38 @@
+@use 'src/app/middleware/scss/mixins';
+
+.account-body{
+    @include mixins.flex-direction-justify-align(row,space-between,center);
+    @include mixins.width-and-height(100%,100%);
+    .sidebar{
+        width: 5%;
+    }
+    .main{
+        @include mixins.flex-direction-justify-align(column,center,center);
+        width: 90%;
+        .header{
+            @include mixins.flex-direction-justify-align(row,space-between,center);
+            @include mixins.width-and-height(100%,100%);
+            .user-data{
+                @include mixins.flex-direction-justify-align(row,space-between,center);
+                img{
+                    @include mixins.width-and-height(50px,50px);
+                    border-radius: 50%;
+                }
+            }
+            .credits-available{
+            
+            }
+            .wallet-button{
+
+            }
+        }
+        .last-orders{
+            @include mixins.flex-direction-justify-align(column,center,center);
+            @include mixins.width-and-height(100%,100%);
+            .order-item{
+                @include mixins.flex-direction-justify-align(row,space-between,center);
+                @include mixins.width-and-height(100%,100%);
+            }
+        }
+    }
+}
