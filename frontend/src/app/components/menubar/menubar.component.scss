@@ -40,14 +40,6 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-
-          a {
-            text-decoration: none;
-
-            &:visited {
-              color: var(--link-text-color);
-            }
-          }
         }
 
         .btn-cart {
@@ -55,6 +47,14 @@
           font-size: 1.75rem;
         }
       }
+    }
+  }
+
+  a {
+    text-decoration: none;
+
+    &:visited {
+      color: var(--link-text-color);
     }
   }
 }

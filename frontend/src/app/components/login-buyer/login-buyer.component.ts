@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-login-buyer',
-  templateUrl: './login-buyer.component.html',
-  styleUrls: ['./login-buyer.component.scss']
+    selector: 'app-login-buyer',
+    templateUrl: './login-buyer.component.html',
+    styleUrls: ['./login-buyer.component.scss']
 })
 export class LoginBuyerComponent {
 
@@ -16,7 +17,8 @@ export class LoginBuyerComponent {
     constructor(
         private formBuilder: FormBuilder,
         private messageService: MessageService,
-        private authService: AuthService
+        private authService: AuthService,
+        private router: Router
     ) {
         this.loginBuyerFormGroup = this.formBuilder.group({
             email: [null, [Validators.required, Validators.maxLength(320), Validators.email]],
@@ -27,7 +29,7 @@ export class LoginBuyerComponent {
         });
     }
 
-    finishLoginBuyer(){
+    finishLoginBuyer() {
         if (this.loginBuyerFormGroup.invalid) {
             this.messageService.add({
                 severity: 'error',
@@ -39,7 +41,16 @@ export class LoginBuyerComponent {
             const formData = this.loginBuyerFormGroup.value
             this.authService.loginBuyer(formData).subscribe({
                 next: (response) => {
-                    console.log(response)
+                    this.authService.setToken(response.access_token)
+                    this.authService.setUserData(response.user_data)
+                    this.router.navigate(['/home'])
+                },
+                error: (response) => {
+                    this.messageService.add({
+                        severity: 'error',
+                        summary: 'Error on Login',
+                        detail: ''
+                    })
                 }
             })
             console.log(formData)
