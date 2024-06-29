@@ -9,11 +9,11 @@
     <ng-template let-product pTemplate="item">
       <div class="product-container" (click)="buyItem()">
         <div class="product-name">
-          <!-- {{product.product_name}} -->
+          {{product.name}}
         </div>
         <div class="product-main-container">
           <div class="product-img">
-            <img [src]="product.product_img">
+            <img [src]="product.image">
           </div>
           <span class="product-description">
             Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
@@ -22,7 +22,7 @@
         </div>
         <div class="product-price-container">
           <span class="product-price">
-            {{product.price | currency: product.currency}}
+            {{product.price_cents/100 | currency: product.currency}}
           </span>
         </div>
         <div class="product-footer">

@@ -9,6 +9,8 @@ from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
+from sqlalchemy.dialects.mysql import LONGTEXT
+from src.migrations.populate_table import populate_history
 
 # revision identifiers, used by Alembic.
 revision: str = 'd1098f5402c8'
@@ -27,11 +29,12 @@ def upgrade() -> None:
         sa.Column('quantity_in_stock', sa.Integer, nullable=False, comment="The quantity on product in stock on the seller"),
         sa.Column('price_cents', sa.Integer, nullable=False, comment="The price value in cents"),
         sa.Column('currency', sa.String(10), nullable=False, comment="Currency in which the product is being sold"),
-        sa.Column('image', sa.LargeBinary, nullable=False, comment="The image of the product, saved as BLOB"),
+        sa.Column('image', LONGTEXT, nullable=False, comment="The image of the product, saved in Base64"),
         sa.Column('created_at', sa.DateTime, nullable=False, comment="The creation time of the product"),
         sa.Column('updated_at', sa.DateTime, nullable=False, comment="The last update time of the product"),
         comment="Products that are sold in the store"
     )
+    populate_history(table_name)
 
 def downgrade() -> None:
     op.drop_table(table_name)

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-home-products',
@@ -6,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-products.component.scss']
 })
 export class HomeProductsComponent {
-
     carouselResponsiveOptions = [
         {
             breakpoint: '1366px',
@@ -25,57 +25,9 @@ export class HomeProductsComponent {
         }
     ];
     topSellingProducts: any[] = [
-        {
-            product_name: 'Chakra Bracelet',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/chakra-bracelet.jpg',
-            old_price: 50,
-            price: 32,
-            currency: 'BRL',
-            discount_percentage: 100,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        },
-        {
-            product_name: 'Galaxy Earrings',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/galaxy-earrings.jpg',
-            old_price: 48,
-            price: 34,
-            currency: 'USD',
-            discount_percentage: 29,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        },
-        {
-            product_name: 'Game Controller',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/game-controller.jpg',
-            old_price: 157,
-            price: 99,
-            currency: 'EUR',
-            discount_percentage: 37,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        },
-        {
-            product_name: 'Game Controller',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/game-controller.jpg',
-            old_price: 157,
-            price: 99,
-            currency: 'EUR',
-            discount_percentage: 37,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        },
-        {
-            product_name: 'Game Controller',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/game-controller.jpg',
-            old_price: 157,
-            price: 99,
-            currency: 'EUR',
-            discount_percentage: 37,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        }
     ]
+    constructor(private productService: ProductService){
+    }
     updateTopSalesCountdown(): boolean {
         let now = new Date().getTime();
 
@@ -97,16 +49,23 @@ export class HomeProductsComponent {
         return all_expired
     }
     ngOnInit(): void {
-        for (let topSale of this.topSellingProducts) {
-            topSale.saleExpireDatetime = '2024-08-08 00:00:00';
-            this.updateTopSalesCountdown();
-        }
-        var countdownInterval = setInterval(() => {
-            let all_expired = this.updateTopSalesCountdown();
-            if (all_expired) {
-                clearInterval(countdownInterval);
+        
+        this.productService.getAllProducts().subscribe({
+            next: (response : any) => {
+                this.topSellingProducts = response
+                
+                for (let topSale of this.topSellingProducts) {
+                    topSale.saleExpireDatetime = '2024-08-08 00:00:00';
+                    this.updateTopSalesCountdown();
+                }
+                var countdownInterval = setInterval(() => {
+                    let all_expired = this.updateTopSalesCountdown();
+                    if (all_expired) {
+                        clearInterval(countdownInterval);
+                    }
+                }, 1000);
             }
-        }, 1000);
+        })
     }
     buyItem(){
 

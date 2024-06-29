@@ -1,0 +1,15 @@
+@use 'src/app/middleware/scss/mixins';
+
+.account-body {
+  @include mixins.flex-direction-justify-align(row, space-between, center);
+  @include mixins.width-and-height(100%, 100%);
+
+  app-buyer-account-sidebar {
+    width: 5%;
+    @include mixins.flex-direction-justify-align(column, center, center);
+  }
+
+  .main {
+    width: 90%;
+  }
+}

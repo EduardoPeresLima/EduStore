@@ -9,6 +9,7 @@ from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
+from src.migrations.populate_table import populate_history
 
 
 # revision identifiers, used by Alembic.
@@ -23,9 +24,10 @@ def upgrade() -> None:
         table_name, 
         sa.Column('id', sa.Integer, primary_key=True, comment="Seller's Identifier"),
         sa.Column('name', sa.String(50), nullable=False, comment="Seller's name"),
-        sa.Column('password', sa.String(50), nullable=False, comment="Seller's password hashed"),
+        sa.Column('password', sa.String(60), nullable=False, comment="Seller's password hashed"),
         comment="Store the seller's information"
     )
+    populate_history(table_name)
 
 def downgrade() -> None:
     op.drop_table(table_name)

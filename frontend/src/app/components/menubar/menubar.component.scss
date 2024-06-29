@@ -1,3 +1,5 @@
+@use 'src/app/middleware/scss/mixins';
+
 :host::ng-deep {
   p-menubar .p-menubar {
     padding: 0.5rem;
@@ -37,11 +39,18 @@
         }
 
         .sign-in-up {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+            @include mixins.flex-direction-justify-align(column,center,center);
         }
-
+        .logged-user{
+            @include mixins.flex-direction-justify-align(column,center,center);
+            .user-links{
+                @include mixins.flex-direction-justify-align(row,center,center);
+                gap: 0.5rem;
+                a{
+                    font-size: 0.75rem;
+                }
+            }
+        }
         .btn-cart {
           cursor: pointer;
           font-size: 1.75rem;
