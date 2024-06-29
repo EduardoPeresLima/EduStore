@@ -29,6 +29,11 @@ import { RegisterUserAddressComponent } from 'src/app/components/register-user/r
 import { RegisterUserMainInfoComponent } from 'src/app/components/register-user/register-user-main-info/register-user-main-info.component';
 import { LoginBuyerComponent } from 'src/app/components/login-buyer/login-buyer.component';
 import { BuyerAccountComponent } from './components/buyer-account/buyer-account.component';
+import { BuyerAccountSidebarComponent } from './components/buyer-account/buyer-account-sidebar/buyer-account-sidebar.component';
+import { BuyerAccountMainComponent } from './components/buyer-account/buyer-account-main/buyer-account-main.component';
+import { BuyerAccountDataComponent } from './components/buyer-account/buyer-account-data/buyer-account-data.component';
+import { BuyerAccountOrdersComponent } from './components/buyer-account/buyer-account-orders/buyer-account-orders.component';
+import { BuyerAccountWalletComponent } from './components/buyer-account/buyer-account-wallet/buyer-account-wallet.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +52,12 @@ import { BuyerAccountComponent } from './components/buyer-account/buyer-account.
         RegisterUserAddressComponent,
         RegisterUserMainInfoComponent,
         LoginBuyerComponent,
-        BuyerAccountComponent
+        BuyerAccountComponent,
+        BuyerAccountSidebarComponent,
+        BuyerAccountMainComponent,
+        BuyerAccountDataComponent,
+        BuyerAccountOrdersComponent,
+        BuyerAccountWalletComponent
 
         //---- Components
     ],

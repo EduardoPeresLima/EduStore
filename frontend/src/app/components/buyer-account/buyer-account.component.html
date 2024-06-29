@@ -1,27 +1,6 @@
 <div class="account-body">
-    <div class="sidebar">
-        <div>Item 1</div>
-        <div>Item 2</div>
-    </div>
-    <div class="main">
-        <div class="header">
-            <div class="user-data">
-                <img src="https://www.w3schools.com/howto/img_avatar.png">
-                <p>Welcome Back, {{userData.username}}</p>
-            </div>
-            <div class="credits-available">
-                <div class="title">Credit Available</div>
-                <div class="credit-amount"> {{0 | currency: 'BRL'}}</div>
-            </div>
-            <div class="wallet-button">
-                <button>My Wallet</button>
-            </div>
-        </div>
-        <div class="last-orders">
-            <div class="order-item" *ngFor="let order of lastOrders">
-                <div class="order-title">Order: 123123 - 01/01/24</div>
-                <button>See Details</button>
-            </div>
-        </div>
-    </div>
+  <app-buyer-account-sidebar></app-buyer-account-sidebar>
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
 </div>

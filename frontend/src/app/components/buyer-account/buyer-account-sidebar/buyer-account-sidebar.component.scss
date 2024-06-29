@@ -1,0 +1,12 @@
+@use 'src/app/middleware/scss/mixins';
+
+.sidebar {
+  @include mixins.flex-direction-justify-align(column, center, center);
+  gap: 1rem;
+
+  i {
+    color: var(--button-color);
+    cursor: pointer;
+    font-size: 1.25rem;
+  }
+}
