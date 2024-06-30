@@ -34,7 +34,7 @@ def upgrade() -> None:
         sa.Column('updated_at', sa.DateTime, nullable=False, comment="The last update time of the product"),
         comment="Products that are sold in the store"
     )
-    populate_history(table_name)
+    populate_history(table_name, 1)
 
 def downgrade() -> None:
     op.drop_table(table_name)

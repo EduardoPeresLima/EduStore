@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product/product.service';
+
+const TOTAL_SALE_ITEMS = 5;
 
 @Component({
     selector: 'app-home-sales',
@@ -23,58 +27,30 @@ export class HomeSalesComponent implements OnInit {
             numScroll: 1
         }
     ];
-    topSales: any[] = [
-        {
-            product_name: 'Chakra Bracelet',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/chakra-bracelet.jpg',
-            old_price: 50,
-            price: 32,
-            currency: 'BRL',
-            discount_percentage: 100,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        },
-        {
-            product_name: 'Galaxy Earrings',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/galaxy-earrings.jpg',
-            old_price: 48,
-            price: 34,
-            currency: 'USD',
-            discount_percentage: 29,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        },
-        {
-            product_name: 'Game Controller',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/game-controller.jpg',
-            old_price: 157,
-            price: 99,
-            currency: 'EUR',
-            discount_percentage: 37,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        },
-        {
-            product_name: 'Game Controller',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/game-controller.jpg',
-            old_price: 157,
-            price: 99,
-            currency: 'EUR',
-            discount_percentage: 37,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        },
-        {
-            product_name: 'Game Controller',
-            product_img: 'https://primefaces.org/cdn/primeng/images/demo/product/game-controller.jpg',
-            old_price: 157,
-            price: 99,
-            currency: 'EUR',
-            discount_percentage: 37,
-            saleExpireDatetime: '',
-            countdown_timer: ''
-        }
-    ]
+    topSales: any[] = []
+    constructor(
+        private productService: ProductService,
+        private router: Router
+    ) { }
+
+    ngOnInit(): void {
+        this.productService.getProductsInSale(TOTAL_SALE_ITEMS).subscribe({
+            next: (topSales: any) => {
+                this.topSales = topSales
+
+                for (let topSale of this.topSales) {
+                    topSale.saleExpireDatetime = '2024-08-08 00:00:00';
+                }
+
+                var countdownInterval = setInterval(() => {
+                    let all_expired = this.updateTopSalesCountdown();
+                    if (all_expired) {
+                        clearInterval(countdownInterval);
+                    }
+                }, 1000);
+            }
+        })
+    }
     updateTopSalesCountdown(): boolean {
         let now = new Date().getTime();
 
@@ -95,20 +71,8 @@ export class HomeSalesComponent implements OnInit {
         }
         return all_expired
     }
-    ngOnInit(): void {
-        for (let topSale of this.topSales) {
-            topSale.saleExpireDatetime = '2024-08-08 00:00:00';
-            this.updateTopSalesCountdown();
-        }
-        var countdownInterval = setInterval(() => {
-            let all_expired = this.updateTopSalesCountdown();
-            if (all_expired) {
-                clearInterval(countdownInterval);
-            }
-        }, 1000);
-    }
 
-    buySaleItem() {
-        console.log("buy")
+    buySaleItem(product_id: number) {
+        this.router.navigate(['product', product_id])
     }
 }

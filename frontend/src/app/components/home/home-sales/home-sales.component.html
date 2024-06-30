@@ -7,31 +7,30 @@
       </div>
     </ng-template>
     <ng-template let-sale pTemplate="item">
-      <div class="sale-container" (click)="buySaleItem()">
+      <div class="sale-container" (click)="buySaleItem(sale.id)">
         <div class="sale-name">
-          <!-- {{sale.product_name}} -->
+          {{sale.name}}
         </div>
         <div class="sale-main-container">
           <div class="sale-img">
-            <img [src]="sale.product_img">
+            <img [src]="sale.image" width="200px" height="200px">
           </div>
           <span class="sale-description">
-            Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
-            Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
+            {{sale.description}}
           </span>
         </div>
         <div class="sale-price-container">
           <span class="sale-old-price">
-            <del>{{sale.old_price | currency: sale.currency}}</del>
+            <del>{{sale.old_price_cents/100 | currency: sale.currency}}</del>
           </span>
           <span class="sale-new-price">
-            {{sale.price | currency: sale.currency}}
+            {{sale.price_cents/100 | currency: sale.currency}}
           </span>
         </div>
         <div class="sale-footer">
           <div class="sale-timer">Termina em <strong>{{sale.countdown_timer}}</strong></div>
           <div class="sale-button">
-            <p-button (click)="buySaleItem()">Comprar</p-button>
+            <p-button (click)="buySaleItem(sale.id)">Comprar</p-button>
           </div>
         </div>
       </div>

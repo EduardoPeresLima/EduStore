@@ -15,9 +15,11 @@ import { BuyerAccountMainComponent } from './components/buyer-account/buyer-acco
 import { BuyerAccountDataComponent } from './components/buyer-account/buyer-account-data/buyer-account-data.component';
 import { BuyerAccountOrdersComponent } from './components/buyer-account/buyer-account-orders/buyer-account-orders.component';
 import { BuyerAccountWalletComponent } from './components/buyer-account/buyer-account-wallet/buyer-account-wallet.component';
+import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent, title: 'EduStore' },
+    { path: 'product/:id', component: ProductComponent, title: 'Product' },
     { path: 'register', component: RegisterUserComponent, canActivate: [loginGuard], title: 'Register User' },
     { path: 'login', component: LoginBuyerComponent, canActivate: [loginGuard], title: 'Login' },
     {
