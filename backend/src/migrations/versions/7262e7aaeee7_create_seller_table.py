@@ -27,7 +27,7 @@ def upgrade() -> None:
         sa.Column('password', sa.String(60), nullable=False, comment="Seller's password hashed"),
         comment="Store the seller's information"
     )
-    populate_history(table_name)
+    populate_history(table_name, 1)
 
 def downgrade() -> None:
     op.drop_table(table_name)

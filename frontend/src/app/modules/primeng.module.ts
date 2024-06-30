@@ -7,6 +7,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext'
 import { MessageService } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar'
+import { ProgressSpinnerModule } from 'primeng/progressspinner'
 import { ToastModule } from 'primeng/toast';
 
 
@@ -19,6 +20,7 @@ import { ToastModule } from 'primeng/toast';
         InputMaskModule,
         InputTextModule,
         MenubarModule,
+        ProgressSpinnerModule,
         ToastModule
     ],
     exports: [
@@ -28,10 +30,11 @@ import { ToastModule } from 'primeng/toast';
         InputMaskModule,
         InputTextModule,
         MenubarModule,
+        ProgressSpinnerModule,
         ToastModule
     ],
     providers: [
-      MessageService,
+        MessageService,
     ]
 })
 export class PrimengModule { }

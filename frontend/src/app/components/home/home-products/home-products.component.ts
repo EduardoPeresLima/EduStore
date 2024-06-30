@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
-  selector: 'app-home-products',
-  templateUrl: './home-products.component.html',
-  styleUrls: ['./home-products.component.scss']
+    selector: 'app-home-products',
+    templateUrl: './home-products.component.html',
+    styleUrls: ['./home-products.component.scss']
 })
 export class HomeProductsComponent {
     carouselResponsiveOptions = [
@@ -24,15 +25,17 @@ export class HomeProductsComponent {
             numScroll: 1
         }
     ];
-    topSellingProducts: any[] = [
+    products: any[] = [
     ]
-    constructor(private productService: ProductService){
-    }
-    updateTopSalesCountdown(): boolean {
+    constructor(
+        private productService: ProductService,
+        private router: Router
+    ) { }
+    updateProductsCountdown(): boolean {
         let now = new Date().getTime();
 
         let all_expired = true;
-        for (let topSale of this.topSellingProducts) {
+        for (let topSale of this.products) {
             let distance = new Date(topSale.saleExpireDatetime).getTime() - now;
             if (distance <= 0) {
                 topSale.countdown_timer = 'EXPIRED';
@@ -49,17 +52,16 @@ export class HomeProductsComponent {
         return all_expired
     }
     ngOnInit(): void {
-        
+
         this.productService.getAllProducts().subscribe({
-            next: (response : any) => {
-                this.topSellingProducts = response
-                
-                for (let topSale of this.topSellingProducts) {
-                    topSale.saleExpireDatetime = '2024-08-08 00:00:00';
-                    this.updateTopSalesCountdown();
+            next: (products: any) => {
+                this.products = products
+
+                for (let product of this.products) {
+                    product.saleExpireDatetime = '2024-08-08 00:00:00';
                 }
                 var countdownInterval = setInterval(() => {
-                    let all_expired = this.updateTopSalesCountdown();
+                    let all_expired = this.updateProductsCountdown();
                     if (all_expired) {
                         clearInterval(countdownInterval);
                     }
@@ -67,7 +69,7 @@ export class HomeProductsComponent {
             }
         })
     }
-    buyItem(){
-
+    buyItem(product_id: number) {
+        this.router.navigate(['product', product_id])
     }
 }

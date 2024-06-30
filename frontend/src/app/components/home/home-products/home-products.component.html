@@ -1,5 +1,5 @@
 <section class="sec-products">
-  <p-carousel [value]="topSellingProducts" [circular]="true" [numVisible]="4" [numScroll]="1"
+  <p-carousel [value]="products" [circular]="true" [numVisible]="4" [numScroll]="1"
     [responsiveOptions]="carouselResponsiveOptions">
     <ng-template pTemplate="header">
       <div class="products-header">
@@ -7,17 +7,16 @@
       </div>
     </ng-template>
     <ng-template let-product pTemplate="item">
-      <div class="product-container" (click)="buyItem()">
+      <div class="product-container" (click)="buyItem(product.id)">
         <div class="product-name">
           {{product.name}}
         </div>
         <div class="product-main-container">
           <div class="product-img">
-            <img [src]="product.image">
+            <img [src]="product.image" width="200px" height="200px">
           </div>
           <span class="product-description">
-            Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
-            Console Playstation 5 Sony, SSD 825GB, Controle sem fio DualSense, Com Mídia Física, Branco - 1214A
+            {{product.description}}
           </span>
         </div>
         <div class="product-price-container">
@@ -28,7 +27,7 @@
         <div class="product-footer">
           <div class="product-timer">Termina em <strong>{{product.countdown_timer}}</strong></div>
           <div class="product-button">
-            <p-button (click)="buyItem()">Comprar</p-button>
+            <p-button (click)="buyItem(product.id)">Comprar</p-button>
           </div>
         </div>
       </div>

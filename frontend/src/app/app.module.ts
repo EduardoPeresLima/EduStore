@@ -34,6 +34,7 @@ import { BuyerAccountMainComponent } from './components/buyer-account/buyer-acco
 import { BuyerAccountDataComponent } from './components/buyer-account/buyer-account-data/buyer-account-data.component';
 import { BuyerAccountOrdersComponent } from './components/buyer-account/buyer-account-orders/buyer-account-orders.component';
 import { BuyerAccountWalletComponent } from './components/buyer-account/buyer-account-wallet/buyer-account-wallet.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +58,8 @@ import { BuyerAccountWalletComponent } from './components/buyer-account/buyer-ac
         BuyerAccountMainComponent,
         BuyerAccountDataComponent,
         BuyerAccountOrdersComponent,
-        BuyerAccountWalletComponent
+        BuyerAccountWalletComponent,
+        ProductComponent
 
         //---- Components
     ],

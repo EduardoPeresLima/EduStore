@@ -16,4 +16,13 @@ export class ProductService {
         const url = `${this.productURL}/`
         return this.http.get<any>(url);
     }
+    getProductById(productId: number){
+        const url = `${this.productURL}/by_id/${productId}`
+        return this.http.get<any>(url);
+    }
+    getProductsInSale(limit:number){
+        const url = `${this.productURL}/sale?limit=${limit}`
+        return this.http.get<any>(url);
+
+    }
 }
