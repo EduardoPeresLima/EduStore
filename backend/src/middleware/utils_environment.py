@@ -2,6 +2,7 @@ from dotenv import dotenv_values
 import os
 
 def get_environment_config():
+    print(os.environ.get('ENVIRONMENT'))
     if os.environ.get('ENVIRONMENT'): return os.environ
     prefix_location = './'
     #ENV_FILE_PATH exists only if it is set on docker

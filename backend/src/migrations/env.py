@@ -64,7 +64,7 @@ def run_migrations_online() -> None:
     DATABASE_HOST = env_config.get('DATABASE_HOST')
     DATABASE_NAME = env_config.get('DATABASE_NAME')
     config.set_main_option('sqlalchemy.url', f"mysql+pymysql://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}/{DATABASE_NAME}")
-
+    print(f"mysql+pymysql://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}/{DATABASE_NAME}")
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
