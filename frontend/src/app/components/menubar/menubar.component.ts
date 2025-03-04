@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { UserData } from 'src/app/interfaces/auth';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -29,6 +29,7 @@ export class MenubarComponent {
     inputProduct: string | undefined
     constructor(
         private route: Router,
+        private messageService: MessageService,
         private authService: AuthService
     ) {
         this.userData = {}
@@ -52,6 +53,11 @@ export class MenubarComponent {
     }
 
     logout(){
+        this.messageService.add({
+            severity: 'success',
+            summary: 'User logged off successfully!',
+            detail: ''
+        })
         this.authService.clearStorage();
     }
 }
