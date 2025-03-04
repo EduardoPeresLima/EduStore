@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class ProductComponent implements OnInit{
     product : any = null
     constructor(
         private activatedRoute: ActivatedRoute,
-        private productService: ProductService
+        private productService: ProductService,
+        private messageService: MessageService
     ){}
     ngOnInit(): void {
         this.productId = +(this.activatedRoute.snapshot.paramMap.get('id') || '');
@@ -28,6 +30,11 @@ export class ProductComponent implements OnInit{
         })
     }
     buyItem(product_id:number){
-        console.log('buy ',product_id)
+        // console.log('buy ',product_id)
+        this.messageService.add({
+            severity: 'warn',
+            summary: 'Buying is still under development',
+            detail: ''
+        })
     }
 }

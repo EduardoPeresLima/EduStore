@@ -1,0 +1,54 @@
+@use 'src/app/middleware/scss/mixins';
+
+main{
+  // @include mixins.flex-direction-justify-align(column, center, center);
+  margin: 0 2rem;
+}
+
+.product-container{
+  @include mixins.flex-direction-justify-align(column, center, center);
+  gap: 1rem;
+  .product-name{
+    @include mixins.width-and-height(100%, 100%);
+    @include mixins.flex-direction-justify-align(column, center, center);
+
+    font-size: 2rem;
+  }
+  .product-body{
+    @include mixins.width-and-height(100%, 100%);
+    @include mixins.flex-direction-justify-align(row, start, flex-start);
+    gap: 2rem;
+    .product-left-img{ 
+      img{
+        max-width: 600px;
+        width: 100%;
+      }
+    }
+    .product-right{
+      @include mixins.flex-direction-justify-align(column, center, center);
+      gap: 1rem;
+      .product-price{
+        align-self: flex-start;
+        font-size: 1.5rem;
+      }
+      .product-description{
+        height: 100%;
+      }
+    }
+  }
+  .product-button {
+    // display: none;
+    width: 100%;
+    height: 100%;
+  }
+}
+:host::ng-deep{
+  .product-button p-button button{
+    width: 100%;
+    height: 100%;
+    border-radius: 7.5px;
+    background-color: mediumslateblue;
+    justify-content: center;
+    align-items: center;
+  }
+}
