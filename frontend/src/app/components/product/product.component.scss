@@ -4,6 +4,9 @@ main{
   // @include mixins.flex-direction-justify-align(column, center, center);
   margin: 0 2rem;
 }
+.spinner-container{
+  @include mixins.flex-direction-justify-align(column, center, center);
+}
 
 .product-container{
   @include mixins.flex-direction-justify-align(column, center, center);

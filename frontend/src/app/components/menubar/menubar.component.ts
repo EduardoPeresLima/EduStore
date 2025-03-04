@@ -13,15 +13,18 @@ export class MenubarComponent {
     menuItems: MenuItem[] = [
         {
             label: 'Sales',
-            icon: 'pi pi-fw pi-gift'
+            icon: 'pi pi-fw pi-gift',
+            routerLink: ['/not-found']
         },
         {
             label: 'Categories',
-            icon: 'pi pi-fw pi-palette'
+            icon: 'pi pi-fw pi-palette',
+            routerLink: ['/not-found']
         },
         {
             label: 'Brands',
-            icon: 'pi pi-fw pi-shopping-bag'
+            icon: 'pi pi-fw pi-shopping-bag',
+            routerLink: ['/not-found']
         }
     ]
     userLogged = false;
