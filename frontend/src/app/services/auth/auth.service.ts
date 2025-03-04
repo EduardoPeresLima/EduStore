@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddressCreateWithBuyer } from 'src/app/interfaces/address';
 import { BuyerCreate, BuyerLogin } from 'src/app/interfaces/buyer';
+import { environment } from 'src/environments/env';
 
 @Injectable({
     providedIn: 'root'
@@ -11,8 +12,7 @@ export class AuthService {
     constructor(
         private http: HttpClient
     ) { }
-    private URL = 'http://localhost:8000'
-    private authURL = this.URL + "/auth";
+    private authURL = environment.BACKEND_URL + "/auth";
 
     httpOptionsJson = {
         headers: new HttpHeaders({
