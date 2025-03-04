@@ -42,9 +42,16 @@
           }
         }
 
-        li a:hover {
-          color: var(--link-text-color);
-          cursor: pointer;
+        li a{
+          text-decoration: none;
+          &:visited {
+            color: black;
+          }
+          &:hover {
+            color: var(--link-text-color);
+            cursor: pointer;
+          }
+      
         }
       }
     }

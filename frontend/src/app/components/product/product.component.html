@@ -1,8 +1,9 @@
 <main>
-  <p-progressSpinner *ngIf="loadingComponent"></p-progressSpinner>
+  <div *ngIf="loadingComponent" class="spinner-container">
+    <p-progressSpinner *ngIf="loadingComponent"></p-progressSpinner>
+  </div>
 
   <div *ngIf="!loadingComponent && product">
-
     <div class="product-container">
       <div class="product-name">
         {{product.name}}
