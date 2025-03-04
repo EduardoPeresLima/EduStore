@@ -43,17 +43,31 @@ export class LoginBuyerComponent {
                 next: (response) => {
                     this.authService.setToken(response.access_token)
                     this.authService.setUserData(response.user_data)
+                    this.messageService.add({
+                        severity: 'success',
+                        summary: 'User logged successfully!',
+                        detail: ''
+                    })
                     this.router.navigate(['/home'])
                 },
                 error: (response) => {
+                    let status_code : number = response.status
+                    let error_detail_toast : string = ""
+                    if(status_code == 0)
+                        error_detail_toast = "Can't reach backend server"
+                    else if(status_code == 401)
+                        error_detail_toast = 'User or password is incorrect'
+                    else if (status_code == 500)
+                        error_detail_toast = 'Internal server error'
+                    else
+                        error_detail_toast = 'Unknown error'
                     this.messageService.add({
                         severity: 'error',
                         summary: 'Error on Login',
-                        detail: ''
+                        detail: error_detail_toast
                     })
                 }
             })
-            console.log(formData)
         }
     }
 }

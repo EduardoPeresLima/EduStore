@@ -22,6 +22,7 @@ import { HomeComponent } from 'src/app/components/home/home.component';
 import { HomeSalesComponent } from 'src/app/components/home/home-sales/home-sales.component';
 import { HomeProductsComponent } from 'src/app/components/home/home-products/home-products.component';
 import { HomeBrandsComponent } from 'src/app/components/home/home-brands/home-brands.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 //User Components
 import { RegisterUserComponent } from 'src/app/components/register-user/register-user.component';
@@ -47,6 +48,7 @@ import { ProductComponent } from './components/product/product.component';
         HomeSalesComponent,
         HomeProductsComponent,
         HomeBrandsComponent,
+        NotFoundComponent,
 
         //User Components
         RegisterUserComponent,

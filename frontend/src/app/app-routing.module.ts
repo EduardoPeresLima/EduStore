@@ -16,6 +16,7 @@ import { BuyerAccountDataComponent } from './components/buyer-account/buyer-acco
 import { BuyerAccountOrdersComponent } from './components/buyer-account/buyer-account-orders/buyer-account-orders.component';
 import { BuyerAccountWalletComponent } from './components/buyer-account/buyer-account-wallet/buyer-account-wallet.component';
 import { ProductComponent } from './components/product/product.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent, title: 'EduStore' },
@@ -31,7 +32,8 @@ const routes: Routes = [
             { path: 'wallet', component: BuyerAccountWalletComponent, title: 'Wallet'}
         ]
     },
-    { path: '**', redirectTo: 'home', pathMatch: 'full' }
+    { path: 'not-found', component: NotFoundComponent, title: 'Page Not Found' },
+    { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 
 @NgModule({
